@@ -14,13 +14,25 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     )
 
-items = ['Washer_(Side_by_Side)','Dryer_(Side_by_Side)','Washer_&_Dryer_(Stackable)','Fridge','Stove','Outside_Cleanup','ReGlazing','Stairs','Awning','AC_unit','Roof_Foaming','Granite_Countertops']
+#dictionary keys represent which column you want them in
+items = {'Washer_(Side_by_Side)':1,
+         'Dryer_(Side_by_Side)':1,
+         'Washer_&_Dryer_(Stackable)':1,
+         'Fridge':2,
+         'Stove':2,
+         'Outside_Cleanup':2,
+         'ReGlazing':3,
+         'Stairs':3,
+         'Awning':3,
+         'AC_unit':4,
+         'Roof_Foaming':4,
+         'Granite_Countertops':4}
 
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
 st.write('Below is shit we need to do (lets goooo)')
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4 = st.columns(4)
 
 def writetostreamlit(todoitem):
     col1.subheader(todoitem)
@@ -33,3 +45,8 @@ def writetostreamlit(todoitem):
 
 for i in items:
     writetostreamlit(i)
+
+L = ['col1','col2','col3','col4']
+for i in L:
+    with i:
+        st.header('A Cat')
