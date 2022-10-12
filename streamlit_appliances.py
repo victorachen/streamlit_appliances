@@ -31,39 +31,44 @@ items = {'Washer_(Side_by_Side)':1,
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
-st.write('Below is shit we need to do (lets goooo)')
+st.write('Below is shit we need to do (lets goooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo)')
 col1, col2, col3, col4 = st.columns(4)
 
 def writetostreamlit(todoitem,col):
     collection = db.collection('Appliances').where("type", "==", todoitem).get()
+    s = """"""
     if col == 1:
         col1.subheader(todoitem)
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                col1.markdown(line)
+                s+= line+', '
+        col1.code(s)
     if col == 2:
         col2.subheader(todoitem)
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                col2.markdown(line)
+                s += line + ', '
+        col2.code(s)
     if col == 3:
         col3.subheader(todoitem)
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                col3.markdown(line)
+                s += line + ', '
+        col3.code(s)
     if col == 4:
         col4.subheader(todoitem)
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                col4.markdown(line)
+                s += line + ', '
+        col4.code(s)
 
 for i in items:
     writetostreamlit(i,items[i])
