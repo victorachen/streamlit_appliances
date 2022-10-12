@@ -34,40 +34,47 @@ entire_collection = db.collection('Appliances').get()
 st.write('Below is shit we need to do (lets goooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo)')
 col1, col2, col3, col4 = st.columns(4)
 
+def format(string):
+    return string.replace('_', ' ')
+
 def writetostreamlit(todoitem,col):
     collection = db.collection('Appliances').where("type", "==", todoitem).get()
     s = """"""
     if col == 1:
-        col1.subheader(todoitem)
+        col1.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
-                line = entry + ': ' + d[entry]
-                s+= line+'\n'+'\n'
+                if entry!='type':
+                    line = format(entry)
+                    s+= line+'\n'+'\n'
         col1.code(s)
     if col == 2:
-        col2.subheader(todoitem)
+        col2.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
-                line = entry + ': ' + d[entry]
-                s += line+'\n'+'\n'
+                if entry!='type':
+                    line = format(entry)
+                    s+= line+'\n'+'\n'
         col2.code(s)
     if col == 3:
-        col3.subheader(todoitem)
+        col3.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
-                line = entry + ': ' + d[entry]
-                s += line+'\n'+'\n'
+                if entry!='type':
+                    line = format(entry)
+                    s+= line+'\n'+'\n'
         col3.code(s)
     if col == 4:
-        col4.subheader(todoitem)
+        col4.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
-                line = entry + ': ' + d[entry]
-                s += line+'\n'+'\n'
+                if entry!='type':
+                    line = format(entry)
+                    s+= line+'\n'+'\n'
         col4.code(s)
 
 for i in items:
