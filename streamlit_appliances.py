@@ -43,7 +43,7 @@ def writetostreamlit(todoitem,col):
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                s+= line+', '
+                s+= line+'\n'+'\n'
         col1.code(s)
     if col == 2:
         col2.subheader(todoitem)
@@ -51,7 +51,7 @@ def writetostreamlit(todoitem,col):
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                s += line + ', '
+                s += line+'\n'+'\n'
         col2.code(s)
     if col == 3:
         col3.subheader(todoitem)
@@ -59,7 +59,7 @@ def writetostreamlit(todoitem,col):
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                s += line + ', '
+                s += line+'\n'+'\n'
         col3.code(s)
     if col == 4:
         col4.subheader(todoitem)
@@ -67,7 +67,7 @@ def writetostreamlit(todoitem,col):
             d = doc.to_dict()
             for entry in d:
                 line = entry + ': ' + d[entry]
-                s += line + ', '
+                s += line+'\n'+'\n'
         col4.code(s)
 
 for i in items:
