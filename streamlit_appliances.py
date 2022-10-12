@@ -15,8 +15,8 @@ st.set_page_config(
     )
 
 #dictionary keys represent which column you want them in
-items = {'Washer_(Side_by_Side)':1,
-         'Dryer_(Side_by_Side)':1,
+items = {'Washer':1,
+         'Dryer':1,
          'Washer_&_Dryer_(Stackable)':1,
          'Fridge':2,
          'Stove':2,
