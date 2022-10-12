@@ -1,4 +1,4 @@
-print('whateverz')
+
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
@@ -19,7 +19,7 @@ items = ['Washer_(Side_by_Side)','Dryer_(Side_by_Side)','Washer_&_Dryer_(Stackab
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
-st.write('Below is shit we need to do')
+st.write('Below is shit we need to do (lets goooo)')
 col1, col2, col3, col4, col5 = st.columns(5)
 
 def writetostreamlit(todoitem):
