@@ -34,19 +34,36 @@ entire_collection = db.collection('Appliances').get()
 st.write('Below is shit we need to do (lets goooo)')
 col1, col2, col3, col4 = st.columns(4)
 
-def writetostreamlit(todoitem):
-    col1.subheader(todoitem)
+def writetostreamlit(todoitem,col):
     collection = db.collection('Appliances').where("type", "==", todoitem).get()
-    for doc in collection:
-        d = doc.to_dict()
-        for entry in d:
-            line = entry + ': ' + d[entry]
-            col1.markdown(line)
+    if col == 1:
+        col1.subheader(todoitem)
+        for doc in collection:
+            d = doc.to_dict()
+            for entry in d:
+                line = entry + ': ' + d[entry]
+                col1.markdown(line)
+    if col == 2:
+        col2.subheader(todoitem)
+        for doc in collection:
+            d = doc.to_dict()
+            for entry in d:
+                line = entry + ': ' + d[entry]
+                col2.markdown(line)
+    if col == 3:
+        col3.subheader(todoitem)
+        for doc in collection:
+            d = doc.to_dict()
+            for entry in d:
+                line = entry + ': ' + d[entry]
+                col3.markdown(line)
+    if col == 4:
+        col4.subheader(todoitem)
+        for doc in collection:
+            d = doc.to_dict()
+            for entry in d:
+                line = entry + ': ' + d[entry]
+                col4.markdown(line)
 
 for i in items:
-    writetostreamlit(i)
-
-L = ['col1','col2','col3','col4']
-for i in L:
-    with i:
-        st.header('A Cat')
+    writetostreamlit(i,items[i])
