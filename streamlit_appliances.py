@@ -18,4 +18,6 @@ db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 for doc in entire_collection:
     d = doc.to_dict()
-    st.write(d)
+    for entry in d:
+        line = entry + ': ' + d[entry]
+        st.write(line)
