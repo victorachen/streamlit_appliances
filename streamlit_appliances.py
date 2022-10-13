@@ -42,7 +42,7 @@ def writetostreamlit(todoitem,col):
     collection = db.collection('Appliances').where("type", "==", todoitem).get()
     L = []
     s = """"""
-    # put everything into a list -> alphabetize list --> put alpha list into """ """ string
+    # put everything into a list -> alphabetize list --> put alpha list into """ """ string.
     if col == 1:
         col1.subheader(format(todoitem))
         for doc in collection:
