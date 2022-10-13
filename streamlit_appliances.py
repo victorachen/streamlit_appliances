@@ -31,7 +31,6 @@ items = {'Washer':1,
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
-st.write('https://forms.gle/pxtLTzNwjVGrUEZHA')
 st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
 
@@ -80,4 +79,8 @@ def writetostreamlit(todoitem,col):
 
 for i in items:
     writetostreamlit(i,items[i])
+
+st.write('')
+st.write('')
+st.write('Make Updates Here: https://forms.gle/pxtLTzNwjVGrUEZHA')
 
