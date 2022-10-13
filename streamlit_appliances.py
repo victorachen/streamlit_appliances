@@ -9,7 +9,7 @@ if not firebase_admin._apps:
     firebase_admin.initialize_app(cred)
 
 st.set_page_config(
-    page_title='Vacancies!',
+    page_title='To Do Items',
     layout="wide",
     initial_sidebar_state="expanded",
     )
@@ -47,7 +47,7 @@ def writetostreamlit(todoitem,col):
             for entry in d:
                 if entry!='type':
                     line = format(entry)
-                    s+= line+'\n'+'\n'
+                    s+= '*'+line+'\n'
         col1.code(s)
     if col == 2:
         col2.subheader(format(todoitem))
@@ -56,7 +56,7 @@ def writetostreamlit(todoitem,col):
             for entry in d:
                 if entry!='type':
                     line = format(entry)
-                    s+= line+'\n'+'\n'
+                    s+='*'+ line+'\n'
         col2.code(s)
     if col == 3:
         col3.subheader(format(todoitem))
@@ -65,7 +65,7 @@ def writetostreamlit(todoitem,col):
             for entry in d:
                 if entry!='type':
                     line = format(entry)
-                    s+= line+'\n'+'\n'
+                    s+= '*'+ line+'\n'
         col3.code(s)
     if col == 4:
         col4.subheader(format(todoitem))
@@ -74,7 +74,7 @@ def writetostreamlit(todoitem,col):
             for entry in d:
                 if entry!='type':
                     line = format(entry)
-                    s+= line+'\n'+'\n'
+                    s+= '*'+ line+'\n'
         col4.code(s)
 
 for i in items:
