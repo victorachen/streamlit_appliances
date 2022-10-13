@@ -3,3 +3,4 @@ pyautogui
 streamlit
 google-cloud-firestore
 firebase_admin
+natsort
