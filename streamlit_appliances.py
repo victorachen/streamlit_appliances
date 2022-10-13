@@ -3,6 +3,7 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from natsort import natsorted, ns
 
 if not firebase_admin._apps:
     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
@@ -39,15 +40,19 @@ def format(string):
 
 def writetostreamlit(todoitem,col):
     collection = db.collection('Appliances').where("type", "==", todoitem).get()
+    L = []
     s = """"""
+    # put everything into a list -> alphabetize list --> put alpha list into """ """ string
     if col == 1:
         col1.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
                 if entry!='type':
-                    line = format(entry)
-                    s+= '*'+line+'\n'
+                    L.append(format(entry))
+        Sorted_L = natsorted(L, alg=ns.IGNORECASE)
+        for i in Sorted_L:
+            s+= '*'+ i +'\n'
         col1.code(s)
     if col == 2:
         col2.subheader(format(todoitem))
