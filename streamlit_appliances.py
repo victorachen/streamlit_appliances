@@ -53,7 +53,7 @@ def writetostreamlit(todoitem,col):
         Sorted_L = natsorted(L, alg=ns.IGNORECASE)
         for i in Sorted_L:
             s+= '*'+ i +'\n'
-        col1.code(s)
+        col1.markdown(s)
     if col == 2:
         col2.subheader(format(todoitem))
         for doc in collection:
