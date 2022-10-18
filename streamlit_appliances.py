@@ -32,7 +32,7 @@ items = {'Washer_(Side_by_Side)':1,
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
-st.header('To Do Items:')
+# st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
 
 def format(string):
