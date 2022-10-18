@@ -88,7 +88,7 @@ def writetostreamlit(todoitem,col):
             s += '- ' + i + '\n'
         col3.markdown(s)
     if col == 4:
-        col4.subheader(format(todoitem))
+        col4.caption(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
