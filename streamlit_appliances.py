@@ -63,8 +63,8 @@ def writetostreamlit(todoitem,col):
                     L.append(format(entry))
         Sorted_L = natsorted(L, alg=ns.IGNORECASE)
         for i in Sorted_L:
-            s += '*' + i + '\n'
-        col2.code(s)
+            s += '- ' + i + '\n'
+        col2.markdown(s)
     if col == 3:
         col3.subheader(format(todoitem))
         for doc in collection:
@@ -74,8 +74,8 @@ def writetostreamlit(todoitem,col):
                     L.append(format(entry))
         Sorted_L = natsorted(L, alg=ns.IGNORECASE)
         for i in Sorted_L:
-            s += '*' + i + '\n'
-        col3.code(s)
+            s += '- ' + i + '\n'
+        col3.markdown(s)
     if col == 4:
         col4.subheader(format(todoitem))
         for doc in collection:
@@ -85,8 +85,8 @@ def writetostreamlit(todoitem,col):
                     L.append(format(entry))
         Sorted_L = natsorted(L, alg=ns.IGNORECASE)
         for i in Sorted_L:
-            s += '*' + i + '\n'
-        col4.code(s)
+            s += '- ' + i + '\n'
+        col4.markdown(s)
 
 for i in items:
     writetostreamlit(i,items[i])
