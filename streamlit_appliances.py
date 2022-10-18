@@ -52,7 +52,7 @@ def writetostreamlit(todoitem,col):
                     L.append(format(entry))
         Sorted_L = natsorted(L, alg=ns.IGNORECASE)
         for i in Sorted_L:
-            s+= '-'+ i +'\n'+'\n'
+            s+= '- '+ i +'\n'+'\n'
         col1.markdown(s)
     if col == 2:
         col2.subheader(format(todoitem))
