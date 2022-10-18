@@ -66,7 +66,7 @@ def writetostreamlit(todoitem,col):
             s+= '- '+ i +'\n'
         col1.markdown(s)
     if col == 2:
-        col2.subheader(format(todoitem))
+        col2.markdown(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
@@ -77,7 +77,7 @@ def writetostreamlit(todoitem,col):
             s += '- ' + i + '\n'
         col2.markdown(s)
     if col == 3:
-        col3.subheader(format(todoitem))
+        col3.text(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
