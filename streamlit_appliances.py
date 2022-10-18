@@ -15,6 +15,17 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     )
 
+padding_top = 0
+
+st.markdown(f"""
+    <style>
+        .reportview-container .main .block-container{{
+            padding-top: {padding_top}rem;
+        }}
+    </style>""",
+    unsafe_allow_html=True,
+)
+
 #dictionary keys represent which column you want them in
 items = {'Washer_(Side_by_Side)':1,
          'Dryer_(Side_by_Side)':1,
