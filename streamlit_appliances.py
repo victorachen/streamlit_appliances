@@ -16,7 +16,7 @@ st.set_page_config(
     )
 
 padding_top = 0
-
+#the margins to be made narrower?
 st.markdown(f"""
     <style>
         .reportview-container .main .block-container{{
@@ -25,6 +25,13 @@ st.markdown(f"""
     </style>""",
     unsafe_allow_html=True,
 )
+
+#testing some shit here
+st.markdown(""" <style> .font {
+font-size:50px ; font-family: 'Cooper Black'; color: #FF9633;} 
+</style> """, unsafe_allow_html=True)
+
+st.markdown('<p class="font">Guess the object Names</p>', unsafe_allow_html=True)
 
 #dictionary keys represent which column you want them in
 items = {'Washer_(Side_by_Side)':1,
