@@ -62,7 +62,7 @@ def writetostreamlit(todoitem,col):
     s = """"""
     # put everything into a list -> alphabetize list --> put alpha list into """ """ string.
     if col == 1:
-        col1.subheader(format(todoitem))
+        col1.caption(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
@@ -73,7 +73,7 @@ def writetostreamlit(todoitem,col):
             s+= '- '+ i +'\n'
         col1.markdown(s)
     if col == 2:
-        col2.markdown(format(todoitem))
+        col2.caption(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
@@ -84,7 +84,7 @@ def writetostreamlit(todoitem,col):
             s += '- ' + i + '\n'
         col2.markdown(s)
     if col == 3:
-        col3.text(format(todoitem))
+        col3.caption(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
