@@ -12,7 +12,7 @@ from google.oauth2 import service_account
 #     firebase_admin.initialize_app(cred)
 
 #to do: try this https://levelup.gitconnected.com/4-easy-steps-to-set-up-a-firestore-database-for-your-streamlit-apps-825c5de5b5bc#5ea8\
-
+#ValueError: The default Firebase app already exists. This means you called initialize_app() more than once without providing an app name as the second argument. In most cases you only need to call initialize_app() once. But if you do want to initialize multiple apps, pass a second argument to initialize_app() to give each app a unique name.
 try:
     app = firebase_admin.get_app()
 except ValueError as e:
@@ -75,8 +75,11 @@ items = {'Washer_(Side_by_Side)':1,
          'Roof_Foaming':4,
          'Granite_Countertops':4}
 
-db = firestore.client()
-# db = firestore.Client(credentials=creds)
+key_dict = json.loads(st.secrets['textkey'])
+    # creds = service_account.Credentials.from_service_account_info(key_dict)
+creds = credentials.Certificate(key_dict)
+# db = firestore.client()
+db = firestore.Client(credentials=creds)
 # entire_collection = db.collection('Appliances').get()
 #
 # #come on!!!!
