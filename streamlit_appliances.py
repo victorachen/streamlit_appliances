@@ -75,7 +75,7 @@ items = {'Washer_(Side_by_Side)':1,
          'Roof_Foaming':4,
          'Granite_Countertops':4}
 
-# db = firestore.client()
+db = firestore.client()
 # db = firestore.Client(credentials=creds)
 # entire_collection = db.collection('Appliances').get()
 #
