@@ -4,34 +4,24 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from natsort import natsorted, ns
+import json
+from google.oauth2 import service_account
 
 # if not firebase_admin._apps:
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
 #     firebase_admin.initialize_app(cred)
 
-creds_dict = json.loads(decrypt(os.environ.get(
-    ({
-  "type": "service_account",
-  "project_id": "streamlit-6ad82",
-  "private_key_id": "7f70292cf2d75f6edfc4ba21fa9537c2c7ff864e",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC264PWWmbhUOvL\nzmzWUEp6PmLUgCWWext/gJb2W7bVR5g5CIxT5f05lG6M3AQMj5IoAqx2Qk0zKtRV\nAvqOebCk8AfRWp3o2F8OutLUisOHt1UiD97gqn8BFMSYUY8EZn+Pxv3hnCrJIFfP\nACqRUtOitHL4hxROB1cA4UrXAix/SEYq77V9WDsNZGSxo25aUoDajvRYZyn4ZeMG\nUOfk85+R8hybhVafj9Vd7vRYj8130lC8Cg9pPFh6lwWLw98syxcJ5S54VZPP6A/T\nfyw03+It6ulQYgm+v5DjW7s0dZQiAMk43XT6XcrbGbECpyirKMqaNjRZLfnuZ3TO\nuVg5KcIfAgMBAAECggEACQSdcFDup4cUyOx5Yyt8MICo4K8cq0mQdn3Bc43b+rHX\n6F/qgyxgipktxhYGwRPG8eAH3qCwK6id5T8LWUDYm5kV2ZVtGZCpRxGg2UeqEiPQ\nt6gupcbiEgyTEKtcsKvY+B6oX5oSZe4JRjRM5PM/adMZo/UM5DfqaymwRd9ekDvL\nmPCQonL1OWNs2UsvPiNZn8RwT3Jm17J0cFSLl/pX+Pc9UKDfMBsHTMwMx3d5wEPR\nEOq2VH7P+sNWADIPXPfHUX6hDbl70UKRLAMndz5a/NC3iVdbYnuWWHUiXUe7BHpN\nrzbbXyteMrDISNtXNVLx8DJL+ICZUl1mb16eFgUL6QKBgQDfFpjDnudx58PcdS8Q\nKkyjSTjBSb5fYx/IqIH3zQ6/JrGNTsoUN4kR6oCRTjCoEVDmInPLbwFL5x9ztBpC\nogDhsvU3ej8sqitTlyoIcA1Sk0PpnOzq5Dkn8H7dJkBfQut1IoQ3a2uXt19mGNgD\n4JF//q9zyvmo/Cv+VWaVvIIVqwKBgQDR5+Ca8ycL1VAr8+AAlqlC+dbd5Dasd4nB\nuO1KN+ivCFpyT6X13p7HRJO9KoUUyDu+r8okqglA5zDVdv6BICG8zi+0F6MTqB+V\nSWFNuwMIa4hO2X9c/ArmcwXYPRsdj4IuVOY6TsnXYj5gBIpJGzzJhtP9lJO52lN8\nb0GwSs6pXQKBgEVHPymAr18wGiLcQUFD4YjTtExSGkyE+9nUeof5phq2aWz4isi8\ndlSZ/lMhdPq8ZeMRz+PdFQn9PEcyJvWKWbu9V2ljDTtRnSLYTrVQFtMN6Ikjsm8/\ncIB2ru7+cf8jSPuXPHf5Y/A5geay0GJj2stkzBepcN6JcSAKZVEauUsBAoGBAIxB\no1wGI04N3/8uerwJ79m39XHY/wto6JyQQ8Y263yhWUZOoDdU5MWDtjBNTBVh4kH9\nVlX/ZCWBFaldVJvVa5WsNEXjEW2eBlSLbsAwuMsUh0UgobDxHRt1Oi+OTSMIdFUf\nF6NYaBhKJiGkhv5oe8qxE8+6SqeCEgzwjnUM12BlAoGAUc4aBIuBYN/ewTzmQ/GJ\nsF4MuqiJ45Jh34saCKIiDycTHh5v1bAqV41ybyHsfMOjWFFWlRa1lN1GNRVaiUwh\nF0jPCWw2Bn6LPPI8hWdUcocMxjkm5C0WGZJoIXxmNjJD8H6o5sjSIXaQOb6YQHYg\nrcX2nbqp2koIlwEDucCIe5w=\n-----END PRIVATE KEY-----\n",
-  "client_email": "firebase-adminsdk-iawtw@streamlit-6ad82.iam.gserviceaccount.com",
-  "client_id": "106402300995454004707",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-iawtw%40streamlit-6ad82.iam.gserviceaccount.com"
-}
-    ))))
-
-creds = credentials.Certificate(creds_dict)
-firebase_admin.initialize_app(creds)
+#to do: try this https://levelup.gitconnected.com/4-easy-steps-to-set-up-a-firestore-database-for-your-streamlit-apps-825c5de5b5bc#5ea8\
 
 # try:
 #     app = firebase_admin.get_app()
 # except ValueError as e:
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
 #     firebase_admin.initialize_app(cred)
+
+key_dict = json.loads(st.secrets['firestore_keys_baby'])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds)
 
 st.set_page_config(
     page_title='To Do Items',
