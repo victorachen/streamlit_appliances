@@ -5,7 +5,13 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 from natsort import natsorted, ns
 
-if not firebase_admin._apps:
+# if not firebase_admin._apps:
+#     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
+#     firebase_admin.initialize_app(cred)
+#
+try:
+    app = firebase_admin.get_app()
+except ValueError as e:
     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
     firebase_admin.initialize_app(cred)
 
@@ -112,5 +118,4 @@ for i in items:
 st.write('')
 st.write('')
 st.write('Make Updates Here: https://forms.gle/pxtLTzNwjVGrUEZHA')
-print('hello world')
 
