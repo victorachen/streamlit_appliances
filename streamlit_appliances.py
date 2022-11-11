@@ -81,7 +81,7 @@ creds = service_account.Credentials.from_service_account_info(key_dict)
 # creds = credentials.Certificate(key_dict)
 # db = firestore.client()
 db = firestore.Client(credentials=creds)
-entire_collection = db.collection('Appliances').get()
+entire_collection = db.collection('Vacancy').get()
 
 #come on!!!!
 for doc in entire_collection:
