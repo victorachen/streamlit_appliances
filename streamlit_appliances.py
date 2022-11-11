@@ -81,16 +81,16 @@ creds = service_account.Credentials.from_service_account_info(key_dict)
 # creds = credentials.Certificate(key_dict)
 # db = firestore.client()
 db = firestore.Client(credentials=creds)
-# entire_collection = db.collection('Appliances').get()
-#
-# #come on!!!!
-# for doc in entire_collection:
-#     d = doc.to_dict()
-#     for entry in d:
-#         st.write(entry + ': ' + d[entry])
-# st.write('is this working?')
-# for doc in entire_collection:
-#     st.write('come on')
+entire_collection = db.collection('Appliances').get()
+
+#come on!!!!
+for doc in entire_collection:
+    d = doc.to_dict()
+    for entry in d:
+        st.write(entry + ': ' + d[entry])
+st.write('is this working?')
+for doc in entire_collection:
+    st.write('come on')
 
 # st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
