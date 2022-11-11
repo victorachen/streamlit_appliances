@@ -19,7 +19,7 @@ from google.oauth2 import service_account
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
 #     firebase_admin.initialize_app(cred)
 
-key_dict = json.loads(st.secrets['firestore_keys_baby'])
+key_dict = json.loads(st.secrets['textkey'])
 creds = service_account.Credentials.from_service_account_info(key_dict)
 db = firestore.Client(credentials=creds)
 
