@@ -66,6 +66,12 @@ items = {'Washer_(Side_by_Side)':1,
 db = firestore.client()
 entire_collection = db.collection('Appliances').get()
 
+#come on!!!!
+for doc in entire_collection:
+    d = doc.to_dict()
+    for entry in d:
+        st.write(entry + ': ' + d[entry])
+
 # st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
 
