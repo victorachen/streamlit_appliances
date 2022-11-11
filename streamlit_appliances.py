@@ -24,6 +24,18 @@ except ValueError as e:
     creds = credentials.Certificate(key_dict)
     firebase_admin.initialize_app(creds)
     # db = firestore.Client(credentials=creds)
+    # db = firestore.client()
+    db = firestore.Client(credentials=creds)
+    entire_collection = db.collection('Appliances').get()
+
+    #come on!!!!
+    for doc in entire_collection:
+        d = doc.to_dict()
+        for entry in d:
+            st.write(entry + ': ' + d[entry])
+    st.write('is this working?')
+    for doc in entire_collection:
+        st.write('come on')
 
 st.set_page_config(
     page_title='To Do Items',
@@ -64,17 +76,17 @@ items = {'Washer_(Side_by_Side)':1,
          'Granite_Countertops':4}
 
 # db = firestore.client()
-db = firestore.Client(credentials=creds)
-entire_collection = db.collection('Appliances').get()
-
-#come on!!!!
-for doc in entire_collection:
-    d = doc.to_dict()
-    for entry in d:
-        st.write(entry + ': ' + d[entry])
-st.write('is this working?')
-for doc in entire_collection:
-    st.write('come on')
+# db = firestore.Client(credentials=creds)
+# entire_collection = db.collection('Appliances').get()
+#
+# #come on!!!!
+# for doc in entire_collection:
+#     d = doc.to_dict()
+#     for entry in d:
+#         st.write(entry + ': ' + d[entry])
+# st.write('is this working?')
+# for doc in entire_collection:
+#     st.write('come on')
 
 # st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
