@@ -23,7 +23,7 @@ except ValueError as e:
     # creds = service_account.Credentials.from_service_account_info(key_dict)
     creds = credentials.Certificate(key_dict)
     firebase_admin.initialize_app(creds)
-# db = firestore.Client(credentials=creds)
+    # db = firestore.Client(credentials=creds)
 
 st.set_page_config(
     page_title='To Do Items',
@@ -63,7 +63,8 @@ items = {'Washer_(Side_by_Side)':1,
          'Roof_Foaming':4,
          'Granite_Countertops':4}
 
-db = firestore.client()
+# db = firestore.client()
+db = firestore.Client(credentials=creds)
 entire_collection = db.collection('Appliances').get()
 
 #come on!!!!
