@@ -13,16 +13,16 @@ from google.oauth2 import service_account
 
 #to do: try this https://levelup.gitconnected.com/4-easy-steps-to-set-up-a-firestore-database-for-your-streamlit-apps-825c5de5b5bc#5ea8\
 
-# try:
-#     app = firebase_admin.get_app()
-# except ValueError as e:
+try:
+    app = firebase_admin.get_app()
+except ValueError as e:
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
 #     firebase_admin.initialize_app(cred)
 
-key_dict = json.loads(st.secrets['textkey'])
-# creds = service_account.Credentials.from_service_account_info(key_dict)
-creds = credentials.Certificate(key_dict)
-firebase_admin.initialize_app(creds)
+    key_dict = json.loads(st.secrets['textkey'])
+    # creds = service_account.Credentials.from_service_account_info(key_dict)
+    creds = credentials.Certificate(key_dict)
+    firebase_admin.initialize_app(creds)
 # db = firestore.Client(credentials=creds)
 
 st.set_page_config(
