@@ -8,6 +8,13 @@ from natsort import natsorted, ns
 import json
 from google.oauth2 import service_account
 
+st.set_page_config(
+    page_title='To Do Items',
+    layout="wide",
+    initial_sidebar_state="expanded",
+    )
+padding_top = 0
+
 
 key_dict = json.loads(st.secrets['textkey'])
 creds = service_account.Credentials.from_service_account_info(key_dict)
@@ -22,30 +29,7 @@ for doc in entire_collection:
 
 st.write("Nov 27")
 st.write("code is working again!")
-
-st.set_page_config(
-    page_title='To Do Items',
-    layout="wide",
-    initial_sidebar_state="expanded",
-    )
-
-padding_top = 0
-#the margins to be made narrower?
-st.markdown(f"""
-    <style>
-        .reportview-container .main .block-container{{
-            padding-top: {padding_top}rem;
-        }}
-    </style>""",
-    unsafe_allow_html=True,
-)
-
-#testing some shit here (css styling)
-# st.markdown(""" <style> .font {
-# font-size:20px ; font-family: 'Cooper Black'; color: #FF9633;}
-# </style> """, unsafe_allow_html=True)
-#
-# st.markdown('<p class="font">Guess the object Names</p>', unsafe_allow_html=True)
+st.write("2022")
 
 #dictionary keys represent which column you want them in
 items = {'Washer_(Side_by_Side)':1,
