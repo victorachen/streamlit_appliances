@@ -22,14 +22,12 @@ db = firestore.Client(credentials=creds)
 
 entire_collection = db.collection('Appliances').get()
 
-for doc in entire_collection:
-    d = doc.to_dict()
-    for entry in d:
-        st.write(entry + ': ' + d[entry])
+# for doc in entire_collection:
+#     d = doc.to_dict()
+#     for entry in d:
+#         st.write(entry + ': ' + d[entry])
 
-st.write("Nov 27")
 st.write("code is working again!")
-st.write("2022")
 
 #dictionary keys represent which column you want them in
 items = {'Washer_(Side_by_Side)':1,
@@ -44,15 +42,6 @@ items = {'Washer_(Side_by_Side)':1,
          'AC_unit':4,
          'Roof_Foaming':4,
          'Granite_Countertops':4}
-
-#come on!!!!
-# for doc in entire_collection:
-#     d = doc.to_dict()
-#     for entry in d:
-#         st.write(entry + ': ' + d[entry])
-st.write('is this working?')
-# for doc in entire_collection:
-#     st.write('come on')
 
 # st.header('To Do Items:')
 col1, col2, col3, col4 = st.columns(4)
