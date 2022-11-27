@@ -1,4 +1,4 @@
-
+#to do when back from run: figure out how to write to this firestore from google forms
 import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
@@ -27,8 +27,6 @@ entire_collection = db.collection('Appliances').get()
 #     for entry in d:
 #         st.write(entry + ': ' + d[entry])
 
-st.write("code is working again!")
-
 #dictionary keys represent which column you want them in
 items = {'Washer_(Side_by_Side)':1,
          'Dryer_(Side_by_Side)':1,
@@ -55,7 +53,7 @@ def writetostreamlit(todoitem,col):
     s = """"""
     # put everything into a list -> alphabetize list --> put alpha list into """ """ string.
     if col == 1:
-        col1.caption(format(todoitem))
+        col1.header(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
@@ -66,7 +64,7 @@ def writetostreamlit(todoitem,col):
             s+= '- '+ i +'\n'
         col1.markdown(s)
     if col == 2:
-        col2.caption(format(todoitem))
+        col2.subheader(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
@@ -77,7 +75,7 @@ def writetostreamlit(todoitem,col):
             s += '- ' + i + '\n'
         col2.markdown(s)
     if col == 3:
-        col3.caption(format(todoitem))
+        col3.title(format(todoitem))
         for doc in collection:
             d = doc.to_dict()
             for entry in d:
