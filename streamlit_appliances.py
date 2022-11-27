@@ -68,7 +68,7 @@ st.markdown(f"""
     </style>""",
     unsafe_allow_html=True,
 )
-st.write('Nov 27')
+
 #testing some shit here (css styling)
 # st.markdown(""" <style> .font {
 # font-size:20px ; font-family: 'Cooper Black'; color: #FF9633;}
