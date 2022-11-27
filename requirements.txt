@@ -1,6 +1,7 @@
 gsheetsdb
 pyautogui
-streamlit
-google-cloud-firestore
+streamlit==1.3.1
+google-cloud-firestore==2.3.4
 firebase_admin
 natsort
+google-auth-oauthlib==0.4.6

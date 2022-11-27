@@ -3,9 +3,24 @@ import streamlit as st
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from google.cloud import firestore
 from natsort import natsorted, ns
 import json
 from google.oauth2 import service_account
+
+
+key_dict = json.loads(st.secrets['textkey'])
+creds = service_account.Credentials.from_service_account_info(key_dict)
+db = firestore.Client(credentials=creds)
+
+entire_collection = db.collection('Appliances').get()
+
+for doc in entire_collection:
+    d = doc.to_dict()
+    for entry in d:
+        st.write(entry + ': ' + d[entry])
+
+st.write("code is working again!")
 
 # if not firebase_admin._apps:
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
@@ -13,29 +28,29 @@ from google.oauth2 import service_account
 
 #to do: try this https://levelup.gitconnected.com/4-easy-steps-to-set-up-a-firestore-database-for-your-streamlit-apps-825c5de5b5bc#5ea8\
 #ValueError: The default Firebase app already exists. This means you called initialize_app() more than once without providing an app name as the second argument. In most cases you only need to call initialize_app() once. But if you do want to initialize multiple apps, pass a second argument to initialize_app() to give each app a unique name.
-try:
-    app = firebase_admin.get_app()
-except ValueError as e:
+##try:
+##    app = firebase_admin.get_app()
+##except ValueError as e:
 #     cred = credentials.Certificate(st.secrets["firestore_keys_baby"])
 #     firebase_admin.initialize_app(cred)
 
-    key_dict = json.loads(st.secrets['textkey'])
+##    key_dict = json.loads(st.secrets['textkey'])
     # creds = service_account.Credentials.from_service_account_info(key_dict)
-    creds = credentials.Certificate(key_dict)
-    firebase_admin.initialize_app(creds)
+##    creds = credentials.Certificate(key_dict)
+##    firebase_admin.initialize_app(creds)
     # db = firestore.Client(credentials=creds)
     # db = firestore.client()
-    db = firestore.Client(credentials=creds)
-    entire_collection = db.collection('Appliances').get()
+##    db = firestore.Client(credentials=creds)
+##    entire_collection = db.collection('Appliances').get()
 
     #come on!!!!
-    for doc in entire_collection:
-        d = doc.to_dict()
-        for entry in d:
-            st.write(entry + ': ' + d[entry])
-    st.write('is this working?')
-    for doc in entire_collection:
-        st.write('come on')
+##    for doc in entire_collection:
+##        d = doc.to_dict()
+##        for entry in d:
+##            st.write(entry + ': ' + d[entry])
+##    st.write('is this working?')
+##    for doc in entire_collection:
+##        st.write('come on')
 
 st.set_page_config(
     page_title='To Do Items',
@@ -53,7 +68,7 @@ st.markdown(f"""
     </style>""",
     unsafe_allow_html=True,
 )
-
+st.write('Nov 27')
 #testing some shit here (css styling)
 # st.markdown(""" <style> .font {
 # font-size:20px ; font-family: 'Cooper Black'; color: #FF9633;}
@@ -75,11 +90,8 @@ items = {'Washer_(Side_by_Side)':1,
          'Roof_Foaming':4,
          'Granite_Countertops':4}
 
-
 key_dict = json.loads(st.secrets['textkey'])
 creds = service_account.Credentials.from_service_account_info(key_dict)
-# creds = credentials.Certificate(key_dict)
-# db = firestore.client()
 db = firestore.Client(credentials=creds)
 entire_collection = db.collection('Vacancy').get()
 
