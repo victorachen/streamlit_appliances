@@ -20,6 +20,7 @@ for doc in entire_collection:
     for entry in d:
         st.write(entry + ': ' + d[entry])
 
+st.write("Nov 27")
 st.write("code is working again!")
 
 # if not firebase_admin._apps:
